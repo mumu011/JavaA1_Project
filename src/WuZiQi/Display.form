@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="WuZiQi.Display">
+  <grid id="27dc6" binding="display" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+    <constraints>
+      <xy x="20" y="20" width="500" height="400"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <component id="7b69" class="javax.swing.JLabel" binding="label_player">
+        <constraints/>
+        <properties>
+          <font name="PingFang SC Bold" size="14" style="0"/>
+          <text value="当前下棋方"/>
+        </properties>
+      </component>
+      <component id="6532d" class="javax.swing.JTextField" binding="textField_player">
+        <constraints/>
+        <properties>
+          <font name="PingFang SC Bold" size="14" style="0"/>
+          <text value="  "/>
+        </properties>
+      </component>
+      <component id="58345" class="javax.swing.JLabel" binding="label_winner">
+        <constraints/>
+        <properties>
+          <font name="PingFang SC Bold" size="14" style="0"/>
+          <text value="赢家"/>
+        </properties>
+      </component>
+      <component id="87f8d" class="javax.swing.JTextField" binding="textField_winner">
+        <constraints/>
+        <properties>
+          <font name="PingFang SC Bold" size="14" style="0"/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>

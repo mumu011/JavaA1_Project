@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="WuZiQi.Control">
+  <grid id="27dc6" binding="control" layout-manager="GridLayoutManager" row-count="2" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="20" y="20" width="602" height="85"/>
+    </constraints>
+    <properties>
+      <font name="PingFang SC Bold" size="16" style="0"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <component id="42b1b" class="javax.swing.JButton" binding="btn_start">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="PingFang SC Bold" size="16" style="0"/>
+          <text value="开始"/>
+        </properties>
+      </component>
+      <component id="6b77b" class="javax.swing.JButton" binding="btn_exit">
+        <constraints>
+          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="PingFang SC Bold" size="16" style="0"/>
+          <text value="结束"/>
+        </properties>
+      </component>
+      <component id="9ef6e" class="javax.swing.JButton" binding="btn_stop">
+        <constraints>
+          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="PingFang SC Bold" size="16" style="0"/>
+          <text value="暂停"/>
+        </properties>
+      </component>
+      <component id="d8e94" class="javax.swing.JButton" binding="btn_restart">
+        <constraints>
+          <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="PingFang SC Bold" size="16" style="0"/>
+          <text value="重新开始"/>
+        </properties>
+      </component>
+      <component id="5bf49" class="javax.swing.JButton" binding="btn_record">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="PingFang SC Bold" size="16" style="0"/>
+          <text value="记录"/>
+        </properties>
+      </component>
+      <component id="e24e" class="javax.swing.JButton" binding="btn_recurrence">
+        <constraints>
+          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="PingFang SC Bold" size="16" style="0"/>
+          <text value="复盘"/>
+        </properties>
+      </component>
+      <component id="511d8" class="javax.swing.JComboBox" binding="comboBox_player">
+        <constraints>
+          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="PingFang SC Bold" size="14" style="0"/>
+        </properties>
+      </component>
+      <component id="3de83" class="javax.swing.JComboBox" binding="comboBox_steps">
+        <constraints>
+          <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="PingFang SC Bold" size="14" style="0"/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>

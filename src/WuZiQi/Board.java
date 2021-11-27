@@ -203,7 +203,7 @@ public class Board extends JPanel {
              list_Black) {
                 bw.write(loc.toString());
             }
-            bw.write("\n");
+//            bw.write("\n");
             bw.flush();
 
             bw.write("Whitelist:");
@@ -211,13 +211,13 @@ public class Board extends JPanel {
                  list_White) {
                 bw.write(loc.toString());
             }
-            bw.write("\n");
+//            bw.write("\n");
             bw.flush();
 
-            bw.write("IsBlack:" + String.valueOf(IsBlack) + "\n");
+            bw.write("IsBlack:" + String.valueOf(IsBlack));
             bw.flush();
 
-            bw.write("Player:" + String.valueOf(player) + "\n");
+            bw.write("Player:" + String.valueOf(player));
             bw.flush();
 
             bw.write("CurrentPlayer:" + String.valueOf(current_player) + "\n");

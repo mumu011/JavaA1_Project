@@ -276,7 +276,7 @@ public class Control {
                 int port = 8000;
                 // host
                 String host = "localhost";
-                client = new Client(host, port);
+                client = new Client(host, port, m_board);
 
                 client.start();
                 try {
@@ -295,7 +295,7 @@ public class Control {
             public void actionPerformed(ActionEvent e) {
                 // 端口号
                 int port = 8000;
-                server = new Server(port);
+                server = new Server(port, m_board);
 
                 server.start();
                 try {

@@ -12,9 +12,12 @@ public class Server extends Thread{
     InputStream is;
     // socket写端口
     BufferedWriter bw;
+    // 棋盘
+    Board m_board;
 
-    public Server(int port) {
+    public Server(int port, Board board) {
         m_port = port;
+        m_board = board;
     }
 
     @Override
@@ -33,7 +36,7 @@ public class Server extends Thread{
             is = socket.getInputStream();
             bw = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
 
-            ReadMsg readMsgfromclient = new ReadMsg(is, bw);
+            ReadMsg readMsgfromclient = new ReadMsg(is, bw, m_board);
             readMsgfromclient.start();
 //            readMsgfromclient.join();
         }

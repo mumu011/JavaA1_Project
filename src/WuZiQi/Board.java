@@ -39,6 +39,10 @@ public class Board extends JPanel {
     public int steps = 0;
     // 复盘列表
     ArrayList<Step> list_steps = new ArrayList<>();
+    // 是否网络对战
+    public boolean IsOnline = false;
+    // socket写端口
+    public BufferedWriter bufferedWriter;
 
     public Board (Display display) {
         m_display = display;
@@ -140,6 +144,10 @@ public class Board extends JPanel {
                     }
                     repaint();
 
+                    // socket发送
+                    if (IsOnline) {
+                        senddata(bufferedWriter);
+                    }
                     // 判断是否有赢家
                     int result = getWinner();
                     if (result == 1) {

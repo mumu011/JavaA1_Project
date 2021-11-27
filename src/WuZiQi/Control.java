@@ -279,18 +279,15 @@ public class Control {
                 client = new Client(host, port);
 
                 client.start();
-                ReadMsg readMsgfromclient = new ReadMsg(server.getis(), server.getbw());
-                ReadMsg readMsgfromserver = new ReadMsg(client.getis(), client.getbw());
-                readMsgfromclient.start();
-                readMsgfromserver.start();
                 try {
                     client.join();
-                    readMsgfromclient.join();
-                    readMsgfromserver.join();
                 }
                 catch (Exception e1) {
                     e1.printStackTrace();
                 }
+
+                m_board.IsOnline = true;
+                m_board.bufferedWriter = client.bw;
             }
         });
         btn_server.addActionListener(new ActionListener() {
@@ -307,6 +304,9 @@ public class Control {
                 catch (Exception e1) {
                     e1.printStackTrace();
                 }
+
+                m_board.IsOnline = true;
+                m_board.bufferedWriter = server.bw;
             }
         });
     }

@@ -25,17 +25,13 @@ public class Client extends Thread{
 
             is = socketClient.getInputStream();
             bw = new BufferedWriter(new OutputStreamWriter(socketClient.getOutputStream()));
+
+            ReadMsg readMsgfromserver = new ReadMsg(is, bw);
+            readMsgfromserver.start();
+//            readMsgfromserver.join();
         }
         catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    public InputStream getis() {
-        return is;
-    }
-
-    public BufferedWriter getbw() {
-        return bw;
     }
 }

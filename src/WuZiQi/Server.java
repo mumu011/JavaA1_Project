@@ -32,6 +32,10 @@ public class Server extends Thread{
 
             is = socket.getInputStream();
             bw = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+
+            ReadMsg readMsgfromclient = new ReadMsg(is, bw);
+            readMsgfromclient.start();
+//            readMsgfromclient.join();
         }
         catch (Exception e1) {
             e1.printStackTrace();
@@ -41,13 +45,5 @@ public class Server extends Thread{
 
     public String getport() {
         return String.valueOf(m_port);
-    }
-
-    public InputStream getis() {
-        return is;
-    }
-
-    public BufferedWriter getbw() {
-        return bw;
     }
 }

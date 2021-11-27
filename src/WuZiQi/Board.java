@@ -203,22 +203,24 @@ public class Board extends JPanel {
              list_Black) {
                 bw.write(loc.toString());
             }
+            bw.write(";");
 //            bw.write("\n");
-            bw.flush();
+//            bw.flush();
 
             bw.write("Whitelist:");
             for (Loc loc:
                  list_White) {
                 bw.write(loc.toString());
             }
+            bw.write(";");
 //            bw.write("\n");
-            bw.flush();
+//            bw.flush();
 
-            bw.write("IsBlack:" + String.valueOf(IsBlack));
-            bw.flush();
+            bw.write("IsBlack:" + String.valueOf(IsBlack) + ";");
+//            bw.flush();
 
-            bw.write("Player:" + String.valueOf(player));
-            bw.flush();
+            bw.write("Player:" + String.valueOf(player) + ";");
+//            bw.flush();
 
             bw.write("CurrentPlayer:" + String.valueOf(current_player) + "\n");
             bw.flush();

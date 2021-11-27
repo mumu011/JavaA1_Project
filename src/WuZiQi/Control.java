@@ -8,6 +8,8 @@ import java.awt.event.ItemListener;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
 import java.util.ArrayList;
 
 public class Control {
@@ -20,11 +22,19 @@ public class Control {
     private JButton btn_recurrence;
     private JComboBox comboBox_player;
     private JComboBox comboBox_steps;
+    private JButton btn_server;
+    private JButton btn_client;
+    private JButton btn_qiuhe;
+    private JButton btn_renshu;
 
     // 棋盘panel,用于信息交互
     public Board m_board;
     // 复盘文件内容
     public ArrayList<String> list_record = new ArrayList<>();
+    // client
+    public Client client;
+    // server
+    public Server server;
 
     public Control(Board board) {
         m_board = board;
@@ -256,6 +266,46 @@ public class Control {
 //                            System.out.println(loc);
 //                        }
                     }
+                }
+            }
+        });
+        btn_client.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // 端口号
+                int port = 8000;
+                // host
+                String host = "localhost";
+                client = new Client(host, port);
+
+                client.start();
+                ReadMsg readMsgfromclient = new ReadMsg(server.getis(), server.getbw());
+                ReadMsg readMsgfromserver = new ReadMsg(client.getis(), client.getbw());
+                readMsgfromclient.start();
+                readMsgfromserver.start();
+                try {
+                    client.join();
+                    readMsgfromclient.join();
+                    readMsgfromserver.join();
+                }
+                catch (Exception e1) {
+                    e1.printStackTrace();
+                }
+            }
+        });
+        btn_server.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // 端口号
+                int port = 8000;
+                server = new Server(port);
+
+                server.start();
+                try {
+                    server.join();
+                }
+                catch (Exception e1) {
+                    e1.printStackTrace();
                 }
             }
         });

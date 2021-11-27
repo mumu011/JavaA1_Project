@@ -9,6 +9,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.Socket;
 import java.util.ArrayList;
 
 public class Board extends JPanel {
@@ -42,7 +43,7 @@ public class Board extends JPanel {
     public Board (Display display) {
         m_display = display;
 
-        setBackground(new Color(235, 177, 152));
+        setBackground(new Color( 210, 167, 135));
 
         // 添加鼠标移动监听 预览棋子
         addMouseMotionListener(new MouseMotionAdapter() {
@@ -182,6 +183,41 @@ public class Board extends JPanel {
                 }
             }
         });
+    }
+
+    // 向socket发送数据报
+    // 数据报包括ArrayList<Loc> blacklist, ArrayList<Loc> whitelist, boolean isBlack, int Player, int CurrentPlayer以便重启游戏
+    public void senddata(BufferedWriter bw) {
+
+        try {
+            bw.write("Blacklist:");
+            for (Loc loc:
+             list_Black) {
+                bw.write(loc.toString());
+            }
+            bw.write("\n");
+            bw.flush();
+
+            bw.write("Whitelist:");
+            for (Loc loc:
+                 list_White) {
+                bw.write(loc.toString());
+            }
+            bw.write("\n");
+            bw.flush();
+
+            bw.write("IsBlack:" + String.valueOf(IsBlack) + "\n");
+            bw.flush();
+
+            bw.write("Player:" + String.valueOf(player) + "\n");
+            bw.flush();
+
+            bw.write("CurrentPlayer:" + String.valueOf(current_player) + "\n");
+            bw.flush();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     // 获取当前棋子

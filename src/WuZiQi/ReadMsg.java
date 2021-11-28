@@ -28,7 +28,7 @@ public class ReadMsg extends Thread{
                  int len = m_br.read(bytes, 0, bytes.length);
                  content = new String(bytes, 0, len);
 
-                 System.out.println(content);
+//                 System.out.println(content);
                  if (!content.isEmpty()) {
                      ArrayList<Loc> list_black = new ArrayList<>();
                      ArrayList<Loc> list_white = new ArrayList<>();

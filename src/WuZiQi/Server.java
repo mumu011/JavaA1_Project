@@ -26,12 +26,12 @@ public class Server extends Thread{
 
         try {
             ServerSocket serverSocket = new ServerSocket(m_port);
-            System.out.println("server running");
-//            JOptionPane.showMessageDialog(null, "Server running");
+//            System.out.println("server running");
+            JOptionPane.showMessageDialog(null, "Server running");
 
             Socket socket = serverSocket.accept();
-            System.out.println("client "+socket.getInetAddress().getLocalHost()+"connected");
-//            JOptionPane.showMessageDialog(null, "client "+socket.getInetAddress().getLocalHost()+"connected");
+//            System.out.println("client "+socket.getInetAddress().getLocalHost()+"connected");
+            JOptionPane.showMessageDialog(null, "client "+socket.getInetAddress().getLocalHost()+"connected");
 
             is = socket.getInputStream();
             bw = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));

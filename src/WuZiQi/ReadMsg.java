@@ -35,7 +35,7 @@ public class ReadMsg extends Thread{
                      boolean IsBlack = true;
                      int player = 1;
                      int currentplayer = 1;
-                     String[] strings = content.split("\n");
+                     String[] strings = content.split("\n|;");
                      for (String s:
                              strings) {
                          if (s.startsWith("Blacklist")) {

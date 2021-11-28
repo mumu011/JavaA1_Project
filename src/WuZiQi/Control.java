@@ -35,6 +35,8 @@ public class Control {
     public Client client;
     // server
     public Server server;
+    // 是否网络对战
+    public boolean IsOnline = false;
 
     public Control(Board board) {
         m_board = board;
@@ -60,6 +62,9 @@ public class Control {
                     m_board.current_player = 2;
                     m_board.m_display.UpdateTextField(2,m_board.IsBlack);
                     JOptionPane.showMessageDialog(null,"玩家二先手");
+                }
+                if (IsOnline) {
+                    m_board.senddata(m_board.bufferedWriter);
                 }
             }
         });
@@ -108,6 +113,9 @@ public class Control {
                     m_board.current_player = 2;
                     m_board.m_display.UpdateTextField(2,m_board.IsBlack);
                     JOptionPane.showMessageDialog(null,"玩家二先手");
+                }
+                if (IsOnline) {
+                    m_board.senddata(m_board.bufferedWriter);
                 }
             }
         });
@@ -288,6 +296,7 @@ public class Control {
 
                 m_board.IsOnline = true;
                 m_board.bufferedWriter = client.bw;
+                IsOnline = true;
             }
         });
         btn_server.addActionListener(new ActionListener() {
@@ -307,6 +316,7 @@ public class Control {
 
                 m_board.IsOnline = true;
                 m_board.bufferedWriter = server.bw;
+                IsOnline = true;
             }
         });
     }

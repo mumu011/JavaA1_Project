@@ -147,6 +147,7 @@ public class Board extends JPanel {
                     // socket发送
                     if (IsOnline) {
                         senddata(bufferedWriter);
+                        IsPaused = true;
                     }
                     // 判断是否有赢家
                     int result = getWinner();
@@ -202,6 +203,7 @@ public class Board extends JPanel {
             for (Loc loc:
              list_Black) {
                 bw.write(loc.toString());
+                bw.write(":");
             }
             bw.write(";");
 //            bw.write("\n");
@@ -211,6 +213,7 @@ public class Board extends JPanel {
             for (Loc loc:
                  list_White) {
                 bw.write(loc.toString());
+                bw.write(":");
             }
             bw.write(";");
 //            bw.write("\n");

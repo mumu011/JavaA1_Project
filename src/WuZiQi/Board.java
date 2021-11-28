@@ -11,6 +11,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Timer;
 
 public class Board extends JPanel {
     // 预落子列表
@@ -43,6 +44,8 @@ public class Board extends JPanel {
     public boolean IsOnline = false;
     // socket写端口
     public BufferedWriter bufferedWriter;
+    // 计时器
+    public Timer timer;
 
     public Board (Display display) {
         m_display = display;
@@ -259,6 +262,9 @@ public class Board extends JPanel {
     // 向socket发送数据报
     // 数据报包括ArrayList<Loc> blacklist, ArrayList<Loc> whitelist, boolean isBlack, int Player, int CurrentPlayer以便重启游戏
     public void senddata() {
+        if (timer != null) {
+            timer.cancel();
+        }
 
         try {
             bufferedWriter.write("Blacklist:");
@@ -297,6 +303,9 @@ public class Board extends JPanel {
 
     // 向socket发送求和信息
     public void sendMsg_qiuhe() {
+        if (timer != null) {
+            timer.cancel();
+        }
 
         try {
             bufferedWriter.write("qiuhe;");
@@ -309,6 +318,9 @@ public class Board extends JPanel {
 
     // 向socket发送结束消息
     public void sendMsg_end() {
+        if (timer != null) {
+            timer.cancel();
+        }
 
         try {
             bufferedWriter.write("end;");
@@ -321,6 +333,9 @@ public class Board extends JPanel {
 
     // 向socket发送认输消息
     public void sendMsg_renshu() {
+        if (timer != null) {
+            timer.cancel();
+        }
 
         try {
             bufferedWriter.write("renshu:" + String.valueOf(current_player) + ":" + String.valueOf(IsBlack) + ";");
@@ -333,6 +348,9 @@ public class Board extends JPanel {
 
     // 向socket发送认输结束消息
     public void sendMsg_renshuEnd(int winner, boolean IsBlack) {
+        if (timer != null) {
+            timer.cancel();
+        }
 
         try {
             bufferedWriter.write("Over:" + String.valueOf(winner) + ":" + String.valueOf(IsBlack) + ";");

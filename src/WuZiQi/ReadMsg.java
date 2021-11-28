@@ -136,6 +136,7 @@ public class ReadMsg extends Thread{
                          m_board.Recurrence(list_black, list_white, IsBlack, player, currentplayer);
                          timer = new Timer();
                          timer.schedule(new timer_aike(m_board, m_textfiled_time), 0, 1000);
+                         m_board.timer = timer;
                      }
                  }
              }

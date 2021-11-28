@@ -36,7 +36,7 @@ public class Server extends Thread{
             Socket socket = serverSocket.accept();
 //            System.out.println("client "+socket.getInetAddress().getLocalHost()+"connected");
 //            JOptionPane.showMessageDialog(null, "client "+socket.getInetAddress().getLocalHost()+"connected");
-            m_textfield.setText("client \"+socket.getInetAddress().getLocalHost()+\"connected");
+            m_textfield.setText("client"+socket.getInetAddress().getLocalHost()+"connected");
 
             is = socket.getInputStream();
             bw = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
@@ -47,6 +47,7 @@ public class Server extends Thread{
         }
         catch (Exception e1) {
             e1.printStackTrace();
+            m_textfield.setText("no client connect");
             return;
         }
     }

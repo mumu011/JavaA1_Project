@@ -257,6 +257,34 @@ public class Board extends JPanel {
         }
     }
 
+    // 向socket发送认输消息
+    public void sendMsg_renshu() {
+
+        try {
+            int winner = 1;
+            if (current_player == 1) {
+                winner = 2;
+            }
+            bufferedWriter.write("renshu:" + String.valueOf(winner) + ":" + String.valueOf(IsBlack) + ";");
+            bufferedWriter.flush();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    // 向socket发送认输结束消息
+    public void sendMsg_renshuEnd(int winner, boolean IsBlack) {
+
+        try {
+            bufferedWriter.write("renshu:" + String.valueOf(winner) + ":" + String.valueOf(IsBlack) + ";");
+            bufferedWriter.flush();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     // display显示平局信息
     public void display_MsgQiuhe() {
         m_display.HeQi();

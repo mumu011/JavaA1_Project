@@ -335,7 +335,7 @@ public class Control {
         btn_renshu.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                m_board.sendMsg_renshu();
             }
         });
     }

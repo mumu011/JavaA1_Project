@@ -30,6 +30,10 @@ public class ReadMsg extends Thread{
                  content = new String(bytes, 0, len);
                  boolean IsQiuhe = false;
                  boolean IsEnd = false;
+                 int winner = 1;
+                 boolean isBlack = true;
+                 boolean IsRenshu = false;
+                 boolean IsOver = false;
 
 //                 System.out.println(content);
                  if (!content.isEmpty()) {
@@ -77,6 +81,18 @@ public class ReadMsg extends Thread{
                          else if (s.startsWith("end")) {
                              IsEnd = true;
                          }
+                         else if (s.startsWith("renshu")) {
+                             String[] strings1 = s.split(":");
+                             winner = Integer.parseInt(strings1[1]);
+                             isBlack = Boolean.valueOf(strings1[2]);
+                             IsRenshu = true;
+                         }
+                         else if (s.startsWith("Over")) {
+                             String[] strings1 = s.split(":");
+                             winner = Integer.parseInt(strings1[1]);
+                             isBlack = Boolean.valueOf(strings1[2]);
+                             IsOver = true;
+                         }
                      }
                      if (IsQiuhe) {
                          int res = JOptionPane.showConfirmDialog(null, "是否接受求和", "求和", JOptionPane.YES_NO_CANCEL_OPTION);
@@ -93,6 +109,16 @@ public class ReadMsg extends Thread{
                      else if (IsEnd) {
                          m_board.IsPaused = true;
                          m_board.display_MsgQiuhe();
+                     }
+                     else if (IsRenshu) {
+                         m_board.IsPaused = true;
+                         m_board.m_display.UpdateWinner(winner, isBlack);
+                         m_board.sendMsg_renshuEnd(winner, isBlack);
+                         JOptionPane.showMessageDialog(null, "对方已认输");
+                     }
+                     else if (IsOver) {
+                         m_board.IsPaused = true;
+                         m_board.m_display.UpdateWinner(winner, isBlack);
                      }
                      else {
                          m_board.Recurrence(list_black, list_white, IsBlack, player, currentplayer);

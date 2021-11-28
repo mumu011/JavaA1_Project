@@ -208,7 +208,7 @@ public class Board extends JPanel {
             x = (int) (16 * random_x);
             y = (int) (16 * random_y);
             loc = new Loc(x, y);
-        } while (!list_Black.contains(loc) && !list_White.contains(loc));
+        } while (list_Black.contains(loc) || list_White.contains(loc));
 
         Checker checker = getChecker(x, y);
         list_LuoZi.add(checker);

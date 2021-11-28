@@ -81,7 +81,7 @@ public class ReadMsg extends Thread{
                      if (IsQiuhe) {
                          int res = JOptionPane.showConfirmDialog(null, "是否接受求和", "求和", JOptionPane.YES_NO_CANCEL_OPTION);
                          if (res == JOptionPane.YES_OPTION) {
-                             m_board.IsPaused = true;
+                             m_board.init();
                              m_board.display_MsgQiuhe();
                              m_board.sendMsg_end();
                              JOptionPane.showMessageDialog(null, "平局！");
@@ -91,7 +91,7 @@ public class ReadMsg extends Thread{
                          }
                      }
                      else if (IsEnd) {
-                         m_board.IsPaused = true;
+                         m_board.init();
                          m_board.display_MsgQiuhe();
                      }
                      else {

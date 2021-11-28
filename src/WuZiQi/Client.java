@@ -16,12 +16,15 @@ public class Client extends Thread{
     Board m_board;
     // 网络情况显示
     JTextField m_textfield;
+    // 计时器显示
+    JTextField m_textfield_time;
 
-    public Client(String host, int port, Board board, JTextField textField) {
+    public Client(String host, int port, Board board, JTextField textField, JTextField textField_time) {
         m_host = host;
         m_port = port;
         m_board = board;
         m_textfield = textField;
+        m_textfield_time = textField_time;
     }
 
     @Override
@@ -35,7 +38,7 @@ public class Client extends Thread{
             is = socketClient.getInputStream();
             bw = new BufferedWriter(new OutputStreamWriter(socketClient.getOutputStream()));
 
-            ReadMsg readMsgfromserver = new ReadMsg(is, bw, m_board, m_textfield);
+            ReadMsg readMsgfromserver = new ReadMsg(is, bw, m_board, m_textfield_time);
             readMsgfromserver.start();
 //            readMsgfromserver.join();
         }

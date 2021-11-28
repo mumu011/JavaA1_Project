@@ -11,14 +11,14 @@ public class ReadMsg extends Thread{
     public InputStream m_br;
     public BufferedWriter m_bw;
     public Board m_board;
-    public JTextField m_textfield;
+    public JTextField m_textfiled_time;
     public Timer timer;
 
-    public ReadMsg(InputStream is, BufferedWriter bw, Board board, JTextField textField) {
+    public ReadMsg(InputStream is, BufferedWriter bw, Board board, JTextField textField_time) {
         m_br = is;
         m_bw = bw;
         m_board = board;
-        m_textfield = textField;
+        m_textfiled_time = textField_time;
     }
 
     @Override
@@ -99,7 +99,9 @@ public class ReadMsg extends Thread{
                          }
                      }
 
-                     timer.cancel();
+                     if (timer != null) {
+                         timer.cancel();
+                     }
                      if (IsQiuhe) {
 //                         IsQiuhe = false;
                          int res = JOptionPane.showConfirmDialog(null, "是否接受求和", "求和", JOptionPane.YES_NO_CANCEL_OPTION);
@@ -133,7 +135,7 @@ public class ReadMsg extends Thread{
                      else {
                          m_board.Recurrence(list_black, list_white, IsBlack, player, currentplayer);
                          timer = new Timer();
-                         timer.schedule(new timer_aike(m_board, m_textfield), 0, 1000);
+                         timer.schedule(new timer_aike(m_board, m_textfiled_time), 0, 1000);
                      }
                  }
              }

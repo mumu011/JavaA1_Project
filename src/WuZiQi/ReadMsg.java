@@ -95,7 +95,7 @@ public class ReadMsg extends Thread{
                          }
                      }
                      if (IsQiuhe) {
-                         IsQiuhe = false;
+//                         IsQiuhe = false;
                          int res = JOptionPane.showConfirmDialog(null, "是否接受求和", "求和", JOptionPane.YES_NO_CANCEL_OPTION);
                          if (res == JOptionPane.YES_OPTION) {
                              m_board.IsPaused = true;
@@ -108,7 +108,7 @@ public class ReadMsg extends Thread{
                          }
                      }
                      else if (IsEnd) {
-                         IsEnd = false;
+//                         IsEnd = false;
                          m_board.IsPaused = true;
                          m_board.display_MsgQiuhe();
                      }
@@ -116,11 +116,11 @@ public class ReadMsg extends Thread{
                          m_board.IsPaused = true;
                          m_board.m_display.UpdateWinner(winner, isBlack);
                          m_board.sendMsg_renshuEnd(winner, isBlack);
-                         IsRenshu = false;
+//                         IsRenshu = false;
                          JOptionPane.showMessageDialog(null, "对方已认输");
                      }
                      else if (IsOver) {
-                         IsOver = false;
+//                         IsOver = false;
                          m_board.IsPaused = true;
                          m_board.m_display.UpdateWinner(winner, isBlack);
                      }

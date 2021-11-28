@@ -261,11 +261,7 @@ public class Board extends JPanel {
     public void sendMsg_renshu() {
 
         try {
-            int winner = 1;
-            if (current_player == 1) {
-                winner = 2;
-            }
-            bufferedWriter.write("renshu:" + String.valueOf(winner) + ":" + String.valueOf(IsBlack) + ";");
+            bufferedWriter.write("renshu:" + String.valueOf(current_player) + ":" + String.valueOf(IsBlack) + ";");
             bufferedWriter.flush();
         }
         catch (Exception e) {

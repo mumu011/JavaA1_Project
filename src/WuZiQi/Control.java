@@ -57,17 +57,20 @@ public class Control {
             @Override
             public void actionPerformed(ActionEvent e) {
                 double random = Math.random();
+                m_board.init();
                 m_board.IsPaused = false;
                 if (random < 0.5) {
                     m_board.player = 1;
                     m_board.current_player = 1;
                     m_board.m_display.UpdateTextField(1,m_board.IsBlack);
+                    m_board.m_display.clear_winner();
                     JOptionPane.showMessageDialog(null,"玩家一先手");
                 }
                 else {
                     m_board.player = 2;
                     m_board.current_player = 2;
                     m_board.m_display.UpdateTextField(2,m_board.IsBlack);
+                    m_board.m_display.clear_winner();
                     JOptionPane.showMessageDialog(null,"玩家二先手");
                 }
                 if (IsOnline) {
@@ -113,12 +116,14 @@ public class Control {
                     m_board.player = 1;
                     m_board.current_player = 1;
                     m_board.m_display.UpdateTextField(1,m_board.IsBlack);
+                    m_board.m_display.clear_winner();
                     JOptionPane.showMessageDialog(null,"玩家一先手");
                 }
                 else {
                     m_board.player = 2;
                     m_board.current_player = 2;
                     m_board.m_display.UpdateTextField(2,m_board.IsBlack);
+                    m_board.m_display.clear_winner();
                     JOptionPane.showMessageDialog(null,"玩家二先手");
                 }
                 if (IsOnline) {

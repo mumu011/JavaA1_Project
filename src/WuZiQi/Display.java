@@ -69,4 +69,9 @@ public class Display {
         textField_player.setText("游戏尚未开始");
         textField_winner.setText("无\t");
     }
+
+    // 清空赢家
+    public void clear_winner() {
+        textField_winner.setText("无\t");
+    }
 }

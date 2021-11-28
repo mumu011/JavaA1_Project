@@ -29,6 +29,7 @@ public class ReadMsg extends Thread{
                  int len = m_br.read(bytes, 0, bytes.length);
                  content = new String(bytes, 0, len);
                  boolean IsQiuhe = false;
+                 boolean IsEnd = false;
 
 //                 System.out.println(content);
                  if (!content.isEmpty()) {
@@ -74,8 +75,7 @@ public class ReadMsg extends Thread{
                              IsQiuhe = true;
                          }
                          else if (s.startsWith("end")) {
-                             m_board.IsPaused = true;
-                             m_board.display_MsgQiuhe();
+                             IsEnd = true;
                          }
                      }
                      if (IsQiuhe) {
@@ -90,7 +90,13 @@ public class ReadMsg extends Thread{
                              m_board.Recurrence(list_black, list_white, IsBlack, player, currentplayer);
                          }
                      }
-                     m_board.Recurrence(list_black, list_white, IsBlack, player, currentplayer);
+                     else if (IsEnd) {
+                         m_board.IsPaused = true;
+                         m_board.display_MsgQiuhe();
+                     }
+                     else {
+                         m_board.Recurrence(list_black, list_white, IsBlack, player, currentplayer);
+                     }
                  }
              }
              catch (Exception e) {

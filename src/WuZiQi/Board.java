@@ -277,7 +277,7 @@ public class Board extends JPanel {
     public void sendMsg_renshuEnd(int winner, boolean IsBlack) {
 
         try {
-            bufferedWriter.write("renshu:" + String.valueOf(winner) + ":" + String.valueOf(IsBlack) + ";");
+            bufferedWriter.write("Over:" + String.valueOf(winner) + ":" + String.valueOf(IsBlack) + ";");
             bufferedWriter.flush();
         }
         catch (Exception e) {

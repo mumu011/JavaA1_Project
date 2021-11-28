@@ -73,6 +73,9 @@ public class ReadMsg extends Thread{
                          else if (s.startsWith("qiuhe")) {
                              IsQiuhe = true;
                          }
+                         else if (s.startsWith("end")) {
+                             m_board.IsPaused = true;
+                         }
                      }
                      if (IsQiuhe) {
                          int res = JOptionPane.showConfirmDialog(null, "是否接受求和", "求和", JOptionPane.YES_NO_CANCEL_OPTION);

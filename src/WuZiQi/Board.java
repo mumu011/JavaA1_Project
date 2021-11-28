@@ -245,6 +245,18 @@ public class Board extends JPanel {
         }
     }
 
+    // 向socket发送结束消息
+    public void sendMsg_end() {
+
+        try {
+            bufferedWriter.write("end;");
+            bufferedWriter.flush();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     // display显示平局信息
     public void display_MsgQiuhe() {
         m_display.HeQi();

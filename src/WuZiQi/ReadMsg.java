@@ -75,6 +75,7 @@ public class ReadMsg extends Thread{
                          }
                          else if (s.startsWith("end")) {
                              m_board.IsPaused = true;
+                             m_board.display_MsgQiuhe();
                          }
                      }
                      if (IsQiuhe) {
@@ -82,6 +83,7 @@ public class ReadMsg extends Thread{
                          if (res == JOptionPane.YES_OPTION) {
                              m_board.IsPaused = true;
                              m_board.display_MsgQiuhe();
+                             m_board.sendMsg_end();
                              JOptionPane.showMessageDialog(null, "平局！");
                          }
                          else {

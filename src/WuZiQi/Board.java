@@ -194,6 +194,68 @@ public class Board extends JPanel {
         });
     }
 
+    // 随机落子
+    public void Random_luozi() {
+        Loc loc;
+        int x;
+        int y;
+        do {
+            double random_x = Math.random();
+            double random_y = Math.random();
+            x = (int) (16 * random_x);
+            y = (int) (16 * random_y);
+            loc = new Loc(x, y);
+        } while (!list_Black.contains(loc) && !list_White.contains(loc));
+
+        Checker checker = getChecker(x, y);
+        list_LuoZi.add(checker);
+        addLoc(loc);
+        // 交换下棋方
+        IsBlack = !IsBlack;
+        // 更新显示内容
+        if (current_player == 1) {
+            current_player = 2;
+            m_display.UpdateTextField(current_player, IsBlack);
+        }
+        else {
+            current_player = 1;
+            m_display.UpdateTextField(current_player, IsBlack);
+        }
+        repaint();
+
+        // socket发送
+        if (IsOnline) {
+            senddata();
+            IsPaused = true;
+        }
+
+        // 判断是否有赢家
+        int result = getWinner();
+        if (result == 1) {
+//                        JOptionPane.showMessageDialog(null, "黑棋赢");
+            if (player == 1) {
+                m_display.UpdateWinner(1,true);
+                JOptionPane.showMessageDialog(null,"玩家一赢");
+            }
+            else {
+                m_display.UpdateWinner(2,true);
+                JOptionPane.showMessageDialog(null,"玩家二赢");
+            }
+            IsPaused = true;
+        }
+        if (result == 2) {
+//                        JOptionPane.showMessageDialog(null, "白棋赢");
+            if (player == 1) {
+                m_display.UpdateWinner(2, false);
+                JOptionPane.showMessageDialog(null, "玩家二赢");
+            } else {
+                m_display.UpdateWinner(1, false);
+                JOptionPane.showMessageDialog(null, "玩家一赢");
+            }
+            IsPaused = true;
+        }
+    }
+
     // 向socket发送数据报
     // 数据报包括ArrayList<Loc> blacklist, ArrayList<Loc> whitelist, boolean isBlack, int Player, int CurrentPlayer以便重启游戏
     public void senddata() {

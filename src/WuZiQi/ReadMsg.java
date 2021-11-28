@@ -5,16 +5,20 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Timer;
 
 public class ReadMsg extends Thread{
     public InputStream m_br;
     public BufferedWriter m_bw;
     public Board m_board;
+    public JTextField m_textfield;
+    public Timer timer;
 
-    public ReadMsg(InputStream is, BufferedWriter bw, Board board) {
+    public ReadMsg(InputStream is, BufferedWriter bw, Board board, JTextField textField) {
         m_br = is;
         m_bw = bw;
         m_board = board;
+        m_textfield = textField;
     }
 
     @Override
@@ -94,6 +98,8 @@ public class ReadMsg extends Thread{
                              IsOver = true;
                          }
                      }
+
+                     timer.cancel();
                      if (IsQiuhe) {
 //                         IsQiuhe = false;
                          int res = JOptionPane.showConfirmDialog(null, "是否接受求和", "求和", JOptionPane.YES_NO_CANCEL_OPTION);
@@ -126,6 +132,8 @@ public class ReadMsg extends Thread{
                      }
                      else {
                          m_board.Recurrence(list_black, list_white, IsBlack, player, currentplayer);
+                         timer = new Timer();
+                         timer.schedule(new timer_aike(m_board, m_textfield), 0, 1000);
                      }
                  }
              }

@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Timer;
 
 public class Server extends Thread{
     // 端口号
@@ -41,7 +42,7 @@ public class Server extends Thread{
             is = socket.getInputStream();
             bw = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
 
-            ReadMsg readMsgfromclient = new ReadMsg(is, bw, m_board);
+            ReadMsg readMsgfromclient = new ReadMsg(is, bw, m_board, m_textfield);
             readMsgfromclient.start();
 //            readMsgfromclient.join();
         }

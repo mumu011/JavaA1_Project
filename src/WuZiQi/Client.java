@@ -3,6 +3,7 @@ package WuZiQi;
 import javax.swing.*;
 import java.io.*;
 import java.net.Socket;
+import java.util.Timer;
 
 public class Client extends Thread{
     public String m_host;
@@ -34,7 +35,7 @@ public class Client extends Thread{
             is = socketClient.getInputStream();
             bw = new BufferedWriter(new OutputStreamWriter(socketClient.getOutputStream()));
 
-            ReadMsg readMsgfromserver = new ReadMsg(is, bw, m_board);
+            ReadMsg readMsgfromserver = new ReadMsg(is, bw, m_board, m_textfield);
             readMsgfromserver.start();
 //            readMsgfromserver.join();
         }

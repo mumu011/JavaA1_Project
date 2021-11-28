@@ -58,6 +58,12 @@ public class Display {
         }
     }
 
+    // 和棋
+    public void HeQi() {
+        textField_winner.setText("平局");
+        textField_player.setText("游戏结束");
+    }
+
     // 初始化
     public void init() {
         textField_player.setText("游戏尚未开始");

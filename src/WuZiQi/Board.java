@@ -245,6 +245,11 @@ public class Board extends JPanel {
         }
     }
 
+    // display显示平局信息
+    public void display_MsgQiuhe() {
+        m_display.HeQi();
+    }
+
     // 获取当前棋子
     private Checker getChecker(int grid_x, int grid_y) {
         Checker checker;

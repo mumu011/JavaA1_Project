@@ -1,5 +1,6 @@
 package WuZiQi;
 
+import javax.swing.*;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.InputStream;
@@ -27,6 +28,7 @@ public class ReadMsg extends Thread{
              try {
                  int len = m_br.read(bytes, 0, bytes.length);
                  content = new String(bytes, 0, len);
+                 boolean IsQiuhe = false;
 
 //                 System.out.println(content);
                  if (!content.isEmpty()) {
@@ -67,6 +69,19 @@ public class ReadMsg extends Thread{
                          else if (s.startsWith("CurrentPlayer")) {
                              String[] strings1 = s.split(":");
                              currentplayer  = Integer.parseInt(strings1[1]);
+                         }
+                         else if (s.startsWith("qiuhe")) {
+                             IsQiuhe = true;
+                         }
+                     }
+                     if (IsQiuhe) {
+                         int res = JOptionPane.showConfirmDialog(null, "是否接受求和", "求和", JOptionPane.YES_NO_CANCEL_OPTION);
+                         if (res == JOptionPane.YES_OPTION) {
+                             JOptionPane.showMessageDialog(null, "平局！");
+                             m_board.init();
+                         }
+                         else {
+                             m_board.Recurrence(list_black, list_white, IsBlack, player, currentplayer);
                          }
                      }
                      m_board.Recurrence(list_black, list_white, IsBlack, player, currentplayer);

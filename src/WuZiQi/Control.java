@@ -71,7 +71,7 @@ public class Control {
                     JOptionPane.showMessageDialog(null,"玩家二先手");
                 }
                 if (IsOnline) {
-                    m_board.senddata(m_board.bufferedWriter);
+                    m_board.senddata();
                 }
             }
         });
@@ -122,7 +122,7 @@ public class Control {
                     JOptionPane.showMessageDialog(null,"玩家二先手");
                 }
                 if (IsOnline) {
-                    m_board.senddata(m_board.bufferedWriter);
+                    m_board.senddata();
                 }
             }
         });
@@ -324,6 +324,18 @@ public class Control {
                 m_board.IsOnline = true;
                 m_board.bufferedWriter = server.bw;
                 IsOnline = true;
+            }
+        });
+        btn_qiuhe.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                m_board.sendMsg_qiuhe();
+            }
+        });
+        btn_renshu.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
             }
         });
     }

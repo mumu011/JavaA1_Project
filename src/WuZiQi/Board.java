@@ -146,7 +146,7 @@ public class Board extends JPanel {
 
                     // socket发送
                     if (IsOnline) {
-                        senddata(bufferedWriter);
+                        senddata();
                         IsPaused = true;
                     }
                     // 判断是否有赢家
@@ -196,37 +196,49 @@ public class Board extends JPanel {
 
     // 向socket发送数据报
     // 数据报包括ArrayList<Loc> blacklist, ArrayList<Loc> whitelist, boolean isBlack, int Player, int CurrentPlayer以便重启游戏
-    public void senddata(BufferedWriter bw) {
+    public void senddata() {
 
         try {
-            bw.write("Blacklist:");
+            bufferedWriter.write("Blacklist:");
             for (Loc loc:
              list_Black) {
-                bw.write(loc.toString());
-                bw.write(":");
+                bufferedWriter.write(loc.toString());
+                bufferedWriter.write(":");
             }
-            bw.write(";");
-//            bw.write("\n");
-//            bw.flush();
+            bufferedWriter.write(";");
+//            bufferedWriter.write("\n");
+//            bufferedWriter.flush();
 
-            bw.write("Whitelist:");
+            bufferedWriter.write("Whitelist:");
             for (Loc loc:
                  list_White) {
-                bw.write(loc.toString());
-                bw.write(":");
+                bufferedWriter.write(loc.toString());
+                bufferedWriter.write(":");
             }
-            bw.write(";");
-//            bw.write("\n");
-//            bw.flush();
+            bufferedWriter.write(";");
+//            bufferedWriter.write("\n");
+//            bufferedWriter.flush();
 
-            bw.write("IsBlack:" + String.valueOf(IsBlack) + ";");
-//            bw.flush();
+            bufferedWriter.write("IsBlack:" + String.valueOf(IsBlack) + ";");
+//            bufferedWriter.flush();
 
-            bw.write("Player:" + String.valueOf(player) + ";");
-//            bw.flush();
+            bufferedWriter.write("Player:" + String.valueOf(player) + ";");
+//            bufferedWriter.flush();
 
-            bw.write("CurrentPlayer:" + String.valueOf(current_player) + "\n");
-            bw.flush();
+            bufferedWriter.write("CurrentPlayer:" + String.valueOf(current_player) + "\n");
+            bufferedWriter.flush();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    // 向socket发送求和信息
+    public void sendMsg_qiuhe() {
+
+        try {
+            bufferedWriter.write("qiuhe;");
+            senddata();
         }
         catch (Exception e) {
             e.printStackTrace();

@@ -39,8 +39,8 @@ public class Client extends Thread{
 //            readMsgfromserver.join();
         }
         catch (Exception e) {
-            e.printStackTrace();
             m_textfield.setText("unconnected!");
+            e.printStackTrace();
         }
     }
 }

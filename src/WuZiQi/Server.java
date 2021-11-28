@@ -46,8 +46,8 @@ public class Server extends Thread{
 //            readMsgfromclient.join();
         }
         catch (Exception e1) {
-            e1.printStackTrace();
             m_textfield.setText("no client connect");
+            e1.printStackTrace();
             return;
         }
     }

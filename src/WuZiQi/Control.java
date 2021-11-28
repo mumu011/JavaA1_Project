@@ -26,6 +26,10 @@ public class Control {
     private JButton btn_client;
     private JButton btn_qiuhe;
     private JButton btn_renshu;
+    private JLabel label_online;
+    private JTextField textField_online;
+    private JLabel label_time;
+    private JTextField textField_time;
 
     // 棋盘panel,用于信息交互
     public Board m_board;
@@ -45,6 +49,9 @@ public class Control {
         comboBox_player.addItem("");
         comboBox_player.addItem("黑棋");
         comboBox_player.addItem("白棋");
+
+        // 设置网络对战显示
+        textField_online.setText("not online\t");
 
         btn_start.addActionListener(new ActionListener() {
             @Override
@@ -284,7 +291,7 @@ public class Control {
                 int port = 8000;
                 // host
                 String host = "localhost";
-                client = new Client(host, port, m_board);
+                client = new Client(host, port, m_board, textField_online);
 
                 client.start();
                 try {
@@ -304,7 +311,7 @@ public class Control {
             public void actionPerformed(ActionEvent e) {
                 // 端口号
                 int port = 8000;
-                server = new Server(port, m_board);
+                server = new Server(port, m_board, textField_online);
 
                 server.start();
                 try {

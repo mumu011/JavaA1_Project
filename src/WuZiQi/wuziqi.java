@@ -13,7 +13,7 @@ public class wuziqi extends JFrame {
     public wuziqi() {
         super("五子棋");
         setVisible(true);
-        setSize(850,1000);
+        setSize(850,1050);
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);

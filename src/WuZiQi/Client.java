@@ -1,5 +1,6 @@
 package WuZiQi;
 
+import javax.swing.*;
 import java.io.*;
 import java.net.Socket;
 
@@ -12,11 +13,14 @@ public class Client extends Thread{
     BufferedWriter bw;
     // 棋盘
     Board m_board;
+    // 网络情况显示
+    JTextField m_textfield;
 
-    public Client(String host, int port, Board board) {
+    public Client(String host, int port, Board board, JTextField textField) {
         m_host = host;
         m_port = port;
         m_board = board;
+        m_textfield = textField;
     }
 
     @Override
@@ -25,6 +29,7 @@ public class Client extends Thread{
 
         try {
             Socket socketClient = new Socket(m_host, m_port);
+            m_textfield.setText("connected!");
 
             is = socketClient.getInputStream();
             bw = new BufferedWriter(new OutputStreamWriter(socketClient.getOutputStream()));

@@ -207,6 +207,12 @@ public class Board extends JPanel {
             double random_y = Math.random();
             x = (int) (16 * random_x);
             y = (int) (16 * random_y);
+            if (x == 0) {
+                x = 1;
+            }
+            if (y == 0) {
+                y = 1;
+            }
             loc = new Loc(x, y);
         } while (list_Black.contains(loc) || list_White.contains(loc));
 
